@@ -1,0 +1,15 @@
+targets:
+  $default:
+    builders:
+      build_runner|freezed:
+        options:
+          generate_for:
+            - lib/**
+      build_runner|json_serializable:
+        options:
+          generate_for:
+            - lib/**
+      build_runner|injectable_generator:
+        options:
+          generate_for:
+            - lib/**
