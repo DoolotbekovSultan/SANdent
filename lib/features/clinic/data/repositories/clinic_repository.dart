@@ -43,13 +43,19 @@ class ClinicRepository implements IClinicRepository {
 
   @override
   Future<ClinicEntity> updateClinic(UpdateClinicParams params) async {
-    final body = <String, dynamic>{};
-    if (params.name != null) body['name'] = params.name;
-    if (params.address != null) body['address'] = params.address;
-    if (params.phone != null) body['phone'] = params.phone;
-    if (params.email != null) body['email'] = params.email;
-    if (params.isActive != null) body['is_active'] = params.isActive;
-    final model = await _remoteDatasource.updateClinic(params.id, body);
+    // final body = <String, dynamic>{};
+    // if (params.name != null) body['name'] = params.name;
+    // if (params.address != null) body['address'] = params.address;
+    // if (params.phone != null) body['phone'] = params.phone;
+    // if (params.email != null) body['email'] = params.email;
+    // if (params.isActive != null) body['is_active'] = params.isActive;
+    final model = await _remoteDatasource.updateClinic(params.id, {
+      'name': ?params.name,
+      'address': ?params.address,
+      'phone': ?params.phone,
+      'email': ?params.email,
+      'is_active': ?params.isActive
+    });
     return model.toDomain();
   }
 
